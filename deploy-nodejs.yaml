@@ -1,0 +1,93 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nodejs-dev-env
+  namespace: nodejs
+data:
+
+  pgsql_url: "Host=10.81.1.3;port=5432;Username=itdev;Password=itdev00;Database=powerbi_portal;"
+  jwtsecret: "CerbW2x8634toxnAACt0k3n"
+  userWebIss: "zwfAHwb5QPjcVl5oknEBfqvgoOG6JLrs"
+  refresh_token_expiration: "1200"
+  access_token_expiration: "60"
+  IntervalMinuteActivate: "15"
+  websiteHeader: "website_key"
+  companyHeader: "company_code"
+  JWT_tokenlifetime: "1440"
+  JWT_JwtIssuer: "compro_api"
+  JWT_JwtAudience: "compro_api"
+  JWT_TokenTypeLogin: "TLG"
+  JWT_TokenTypeForgotPass: "TFP"
+  JWT_tokenResetPasswordLifeTime: "1440"
+
+  UrlPrefix: " "
+
+  rabbit_url: "amqp://itdev:Itdev00@rabbitmq-dev.rabbitmq-dev.svc.cluster.local:5672"
+  rabbit_EventBus: "compro_eventbus"
+  rabbit_LoggerEventBus: "logger"
+  rabbit_LoggingQueue: "logQueue"
+  rabbit_EmailQueue: "EmailQueue"
+  rabbit_SchedulerQueue: "event_scheduler_queue"
+  rabbit_eventQueueName: "content_queue"
+
+  ModuleName: "powerbi"
+  AppName: "powerbiapi"
+
+  UrlCerberusGetUserBasicInfo: "http://api-sandbox-cerberus.klgsys.com/ldap/User/GetUserBasicInfo?nik=pnik&session=sessionid&userID=puserid"
+
+  UrlPowerBiGetTokenLogin: "https://login.windows.net/common/oauth2/token"
+  UrlPowerBiGetGroupReport: "https://api.powerbi.com/v1.0/myorg/groups"
+  UrlPowerBiGetReportByGroup: "https://api.powerbi.com/v1.0/myorg/groups/paramGroupId/reports"
+  UrlPowerBiGetTokenEmbedReport: "https://api.powerbi.com/v1.0/myorg/groups/paramGroupId/reports/paramReportId/generatetoken"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-dev
+  namespace: nodejs
+  labels:
+    app: nodejs-dev
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: 30023
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app: nodejs-dev
+---
+
+apiVersion: apps/v1 #  for k8s versions before 1.9.0 use apps/v1beta2  and before 1.8.0 use extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nodejs-dev
+  namespace: nodejs
+spec:
+  selector:
+    matchLabels:
+      app: nodejs-dev
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nodejs-dev
+    spec:
+      containers:
+      - name: nodejs-dev
+        image: andikapri/nodejs:1.0
+        imagePullPolicy: Always
+#        resources:
+#          requests:
+#            cpu: 500m
+#            memory: 800Mi
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: nodejs-dev-env
+      nodeSelector:
+        node: app
+      imagePullSecrets:
+      - name: ecr-secret

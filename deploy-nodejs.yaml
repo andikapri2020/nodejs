@@ -76,7 +76,7 @@ spec:
     spec:
       containers:
       - name: nodejs-dev
-        image: andikapri/nodejs:1.0
+        image: andikapri/nodejs:<version>
         imagePullPolicy: Always
 #        resources:
 #          requests:

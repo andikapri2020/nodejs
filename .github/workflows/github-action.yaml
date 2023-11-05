@@ -31,8 +31,11 @@ jobs:
           git remote set-url origin https://andikapri2020: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@github.com/andikapri2020/test-github-action.git
           git clone https://github.com/andikapri2020/test-github-action.git 
           cd test-github-action/sample-app/
-          sed -e "s|$(cat andiapp-node.yaml | grep "image:" | awk {'print $2'})|andikapri/nodejs:${{ github.run_id }}|" andiapp-node.yaml
-          cat andiapp-node.yaml
+          export VAR_IMAGENAME=$(cat andiapp-node.yaml | grep "image:" | awk {'print $2'})
+          sed -e "s|$VAR_IMAGENAME|andikapri/nodejs:${{ github.run_id }}|" andiapp-node.yaml
+          git add .
+          git commit -m "deploy apps"
+          git push origin staging
 
           
 

@@ -37,6 +37,7 @@ jobs:
           sed -i "s|$VAR_IMAGENAME|andikapri/nodejs:${{ github.run_id }}|" andiapp-node.yaml
           git add .
           git commit -m "deploy apps"
+          git remote set-url origin https://andikapri2020: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@github.com/andikapri2020/test-github-action.git
           git push origin main
 
           

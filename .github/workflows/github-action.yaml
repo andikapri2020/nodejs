@@ -15,14 +15,6 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: Read File tambah
-        run: |
-          cd ${{ github.workspace }}
-          cat tambah.txt
-      - name: Read File andi
-        run: |
-          cd ${{ github.workspace }}
-          cat andi.txt
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Output Run ID
         run: echo ${{ github.run_id }}

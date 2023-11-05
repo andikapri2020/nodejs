@@ -24,4 +24,10 @@ jobs:
         run: docker build --file Dockerfile --tag andikapri/nodejs:${{ github.run_id }} .
 
       - name: Push the Docker image
-        run: docker push andikapri/nodejs:${{ github.run_id }}        
+        run: docker push andikapri/nodejs:${{ github.run_id }}   
+
+      - name: Git clone
+        run: |
+          git clone https://github.com/andikapri2020/test-github-action.git 
+          ls -al test-github-action/
+               

@@ -28,9 +28,6 @@ jobs:
 
       - name: Git clone
         run: |
-          git config --global user.email "andikapri87@gmail.com"
-          git config --global user.name "andikapri2020"
-          git config --global user.password "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"
           git clone https://github.com/andikapri2020/test-github-action.git 
           cd test-github-action/sample-app/
           export VAR_IMAGENAME=$(cat andiapp-node.yaml | grep "image:" | awk {'print $2'})

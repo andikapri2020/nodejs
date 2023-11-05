@@ -13,15 +13,15 @@ app.get('/', (req, res) => {
 });
 
 app.get('/list', (req, res) => {
-  res.send('Ini halaman list update');
+  res.send('list page from argocd');
 });
 
 app.get('/view', (req, res) => {
-  res.send('Ini halaman view update aa');
+  res.send('view page from argocd');
 });
 
 app.get('/app', (req, res) => {
-  res.send('Ini halaman app update bb');
+  res.send('app page from argocd');
 });
 
 app.listen(PORT, HOST, () => {

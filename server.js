@@ -13,15 +13,15 @@ app.get('/', (req, res) => {
 });
 
 app.get('/list', (req, res) => {
-  res.send('Ini halaman list');
+  res.send('Ini halaman list update');
 });
 
 app.get('/view', (req, res) => {
-  res.send('Ini halaman view');
+  res.send('Ini halaman view update aa');
 });
 
 app.get('/app', (req, res) => {
-  res.send('Ini halaman app');
+  res.send('Ini halaman app update bb');
 });
 
 app.listen(PORT, HOST, () => {

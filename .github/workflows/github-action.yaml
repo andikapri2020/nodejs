@@ -37,7 +37,7 @@ jobs:
           sed -e "s|$VAR_IMAGENAME|andikapri/nodejs:${{ github.run_id }}|" andiapp-node.yaml
           git add .
           git commit -m "deploy apps"
-          git push origin staging
+          git push origin main
 
           
 

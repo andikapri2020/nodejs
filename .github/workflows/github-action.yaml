@@ -28,7 +28,8 @@ jobs:
 
       - name: Git clone
         run: |
-          git remote set-url origin https://andikapri2020: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@github.com/andikapri2020/test-github-action.git
+          git config user.name "andikapri2020"
+          git config user.password "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"
           git clone https://github.com/andikapri2020/test-github-action.git 
           cd test-github-action/sample-app/
           export VAR_IMAGENAME=$(cat andiapp-node.yaml | grep "image:" | awk {'print $2'})

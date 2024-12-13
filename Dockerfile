@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:18
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -15,9 +15,11 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-ENV NEW_RELIC_DISTRIBUTED_TRACING_ENABLED=true
-ENV NEW_RELIC_LOG=stdout
 
 EXPOSE 8080
 CMD [ "node", "server.js" ]
+
+ENV NEW_RELIC_NO_CONFIG_FILE=true
+ENV NEW_RELIC_DISTRIBUTED_TRACING_ENABLED=true
+ENV NEW_RELIC_LOG=stdout
 

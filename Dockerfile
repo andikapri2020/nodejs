@@ -15,5 +15,9 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+ENV NEW_RELIC_DISTRIBUTED_TRACING_ENABLED=true
+ENV NEW_RELIC_LOG=stdout
+
 EXPOSE 8080
 CMD [ "node", "server.js" ]
+

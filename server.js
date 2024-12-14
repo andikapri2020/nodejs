@@ -7,6 +7,20 @@ const express = require('express');
 // Constants
 const PORT = 8080;
 const HOST = '0.0.0.0';
+const winston = require('winston');
+
+
+//logging
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  transports: [new winston.transports.Console()],
+});
+
+logger.info('Info message');
+logger.error('Error message');
+logger.warn('Warning message');
+
 
 // App
 const app = express();

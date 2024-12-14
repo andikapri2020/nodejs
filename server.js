@@ -26,18 +26,22 @@ logger.warn('Warning message');
 const app = express();
 app.get('/', (req, res) => {
   res.send('Hello World');
+  logger.info('you are hitting /');
 });
 
 app.get('/list', (req, res) => {
   res.send('list page from argocd');
+  logger.info('you are hitting /list');
 });
 
 app.get('/view', (req, res) => {
   res.send('view page from argocd');
+  logger.info('you are hitting /view');
 });
 
 app.get('/app', (req, res) => {
   res.send('app page from argocd');
+  logger.info('you are hitting /app');
 });
 
 app.listen(PORT, HOST, () => {

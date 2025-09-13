@@ -1,0 +1,30 @@
+name: SonarQube Analysis
+
+on:
+  push:
+    branches:
+      - testing
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Required for SonarQube analysis of pull requests
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20' # Or your preferred Node.js version
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: SonarQube Scan
+      uses: SonarSource/sonarcloud-github-action@v2.2.0 # Or SonarSource/sonarqube-scan-action if using SonarQube Server
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} # Required if using SonarQube Server and not SonarCloud
+      with:
+        projectKey: my-nodejs-app # Must match sonar.projectKey in sonar-project.properties

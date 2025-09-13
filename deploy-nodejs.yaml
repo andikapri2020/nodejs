@@ -77,7 +77,6 @@ spec:
       containers:
       - name: nodejs-dev
         image: 082446803532.dkr.ecr.us-east-2.amazonaws.com/nodejs-app:<version>
-#        image: andikapri/nodejs:<version>
         imagePullPolicy: Always
 #        resources:
 #          requests:

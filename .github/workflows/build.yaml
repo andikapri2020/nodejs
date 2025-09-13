@@ -22,8 +22,17 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: SonarQube Scan
-      uses: SonarSource/sonarcloud-github-action@v2.2.0 # Or SonarSource/sonarqube-scan-action if using SonarQube Server
+    - name: Run SonarQube Scanner
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} # Required if using SonarQube Server  and not SonarCloud
+      run: |
+        npx sonar-scanner \
+          -Dsonar.projectKey=my-nodejs-app \
+          -Dsonar.host.url=https://sonar.rayhan-belajar.my.id \
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
+#    - name: SonarQube Scan
+#      uses: SonarSource/sonarcloud-github-action@v2.2.0 # Or SonarSource/sonarqube-scan-action if using SonarQube Server
+#      env:
+#        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} # Required if using SonarQube Server  and not SonarCloud

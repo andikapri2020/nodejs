@@ -26,4 +26,4 @@ jobs:
       uses: SonarSource/sonarcloud-github-action@v2.2.0 # Or SonarSource/sonarqube-scan-action if using SonarQube Server
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} # Required if using SonarQube Server and is not SonarCloud
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} # Required if using SonarQube Server and not SonarCloud

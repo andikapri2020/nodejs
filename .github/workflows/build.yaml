@@ -29,4 +29,3 @@ jobs:
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} # Required if using SonarQube Server and not SonarCloud
       with:
         projectKey: my-nodejs-app # Must match sonar.projectKey in sonar-project.properties
-        projectBaseDir: .

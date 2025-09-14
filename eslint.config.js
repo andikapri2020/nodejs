@@ -10,8 +10,8 @@ export default [
     rules: {
       // Tambahkan aturan kustom Anda di sini
       // Misalnya:
-      "semi": ["error", "always"],
-      "quotes": ["error", "double"]
+      "semi": ["error", "never"],
+      "quotes": ["error", "single"]
     }
   }
 ];

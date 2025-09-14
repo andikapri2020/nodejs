@@ -5,9 +5,12 @@ export default [
   {
     languageOptions: { 
         globals: globals.browser,
-        ecmaVersion: 5,
-        sourceType: 'commonjs' // tambahkan baris ini 
-    }
+        sourceType: 'commonjs',
+        parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module" // Tambahkan baris ini
+        }
+    }    
   },
   pluginJs.configs.recommended,
   {

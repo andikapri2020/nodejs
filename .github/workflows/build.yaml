@@ -28,6 +28,9 @@ jobs:
     - name: Run ESLint
       run: npx eslint .
 
+    - name: Run Linter (ESLint)
+      run: npm run lint
+
     - name: Run SonarQube Scanner
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -36,9 +39,3 @@ jobs:
           -Dsonar.projectKey=my-nodejs-app \
           -Dsonar.host.url=https://sonar.rayhan-belajar.my.id \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-
-#    - name: SonarQube Scan
-#      uses: SonarSource/sonarcloud-github-action@v2.2.0 # Or SonarSource/sonarqube-scan-action if using SonarQube Server
-#      env:
-#        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} # Required if using SonarQube Server  and not SonarCloud

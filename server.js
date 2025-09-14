@@ -2,13 +2,15 @@
 
 'use strict';
 
-const express = require('express');
 
 // Constants
 const PORT = 8080;
 const HOST = '0.0.0.0';
-const winston = require('winston');
+//const winston = require('winston');
+//const express = require('express');
 
+import express from 'express';
+import winston from 'winston';
 
 //logging
 const logger = winston.createLogger({

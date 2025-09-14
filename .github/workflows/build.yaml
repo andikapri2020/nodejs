@@ -48,4 +48,22 @@ jobs:
       with:
         context: .
         push: true
-        tags: andikapri/nodejs:${{ github.sha }}          
+        tags: andikapri/nodejs:${{ github.run_id }}
+
+    - name: Install kubectl
+      uses: azure/setup-kubectl@v4
+      with:
+        version: 'v1.29.2'
+
+    - name: Set up Kubeconfig
+      run: |
+        mkdir -p ~/.kube
+        echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
+
+    - name: Set Image Deployment
+      run: |
+        sed -i 's/<version>/${{ github.run_id }}/g' deploy-nodejs.yaml
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl apply -f deploy-nodejs.yaml

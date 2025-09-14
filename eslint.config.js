@@ -5,7 +5,6 @@ export default [
   {
     languageOptions: { 
         globals: globals.browser,
-        sourceType: 'commonjs',
         parserOptions: {
         ecmaVersion: "latest",
         sourceType: "module" // Tambahkan baris ini

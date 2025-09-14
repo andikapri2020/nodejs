@@ -1,5 +1,5 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
+import globals from 'globals';
+import pluginJs from '@eslint/js';
 
 export default [
   {
@@ -10,8 +10,8 @@ export default [
     rules: {
       // Tambahkan aturan kustom Anda di sini
       // Misalnya:
-      "semi": ["error", "never"],
-      "quotes": ["error", "single"]
+      semi: ['error', 'never'],
+      quotes: ['error', 'single']
     }
   }
 ];

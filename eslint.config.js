@@ -3,7 +3,10 @@ import pluginJs from '@eslint/js';
 
 export default [
   {
-    languageOptions: { globals: globals.browser },
+    languageOptions: { 
+        globals: globals.browser,
+        sourceType: 'commonjs' // tambahkan baris ini 
+    }
   },
   pluginJs.configs.recommended,
   {

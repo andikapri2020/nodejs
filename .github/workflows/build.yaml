@@ -55,7 +55,6 @@ jobs:
       with:
         version: 'v1.29.2'
 
-
     - name: Set Image Deployment
       run: |
         sed -i 's/<version>/${{ github.run_id }}/g' deploy-nodejs.yaml

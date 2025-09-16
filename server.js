@@ -36,6 +36,12 @@ app.get('/list', (req, res) => {
   logger.info('you are hitting /list');
 });
 
+app.get('/thanks', (req, res) => {
+  res.send('thanks page from github action');
+  logger.info('you are hitting /list');
+});
+
+
 app.get('/view', (req, res) => {
   res.send('view page from argocd');
   logger.info('you are hitting /view');
